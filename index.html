@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Touch Coordinates</title>
+</head>
+<body>
+
+  <div id="touchArea" style="width: 100%; height: 300px; background-color: lightgray;">
+    Toque aqui
+  </div>
+
+  <p>Coordenadas: <span id="coords"></span></p>
+
+  <script>
+    const touchArea = document.getElementById('touchArea');
+    const coords = document.getElementById('coords');
+
+    touchArea.addEventListener('touchstart', function(event) {
+      const touch = event.touches[0]; // Pega o primeiro toque
+      const x = touch.clientX;
+      const y = touch.clientY;
+      coords.textContent = `X: ${x}, Y: ${y}`;
+    });
+
+    touchArea.addEventListener('touchmove', function(event) {
+      const touch = event.touches[0]; // Pega o primeiro toque em movimento
+      const x = touch.clientX;
+      const y = touch.clientY;
+      coords.textContent = `X: ${x}, Y: ${y}`;
+    });
+
+    touchArea.addEventListener('touchend', function() {
+      coords.textContent = 'Toque finalizado';
+    });
+  </script>
+
+</body>
+</html>
